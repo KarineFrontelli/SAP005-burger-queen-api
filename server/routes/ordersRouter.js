@@ -5,9 +5,9 @@ const router = Router()
 
 // aqui vai as requisições
 router.get("/", OrdersController.getAllOrders)
-router.get("/:orderId", OrdersController.getOrdersById)
+router.get("/:orderid", OrdersController.getOrdersById)
 router.post("/", OrdersController.postAllOrders)
-//router.put("/:orderId", OrdersController.putOrdersById)
-//router.delete("/:orderId", OrdersController.deletedOrdersById)
+router.put("/:orderid", OrdersController.putOrdersById)
+router.delete("/:orderid", OrdersController.deletedOrdersById)
 
 module.exports = router
