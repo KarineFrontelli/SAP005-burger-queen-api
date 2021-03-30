@@ -17,18 +17,21 @@ class UsersController {
     return res.status(200).json(user);
   }
 
-  static async postAllUsers(req, res) {
+  static async postNewUsers(req, res) {
     const newUser = await database.Users.create(req.body);
     return res.status(200).json(newUser);
   }
 
   static async putUsersById(req, res) {
-    const { userid } = req.params;
-    const user = await database.Users.findAll({
-      where: {
-        id: Number(userid),
-      },
-    });
+    const { name, email, role, restaurant } = req.body;
+    const { uid } = req.params;
+    const user = await database.Users.update(
+      { name, email, role, restaurant },
+      {
+        where: {
+          id: Number(uid)
+        }
+      })
     return res.status(200).json(user);
   }
 
