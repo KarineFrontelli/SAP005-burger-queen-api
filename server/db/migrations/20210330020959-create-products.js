@@ -26,6 +26,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       type: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       sub_type: {
