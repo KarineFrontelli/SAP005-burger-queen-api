@@ -34,12 +34,12 @@ class UsersController {
 
   static async deleteUserById(req, res) {
     const { uid } = req.params;
-    const user = await database.Users.destroy({
+    const deleteduser = await database.Users.destroy({
       where: {
         id: Number(uid),
       },
     });
-    return res.status(200).json(user);
+    return res.status(200).json(deleteduser);
   }
 }
 

@@ -25,7 +25,6 @@ class ProductsController {
 
   static async putProductsbyId(req, res) {
     const { productid } = req.params;
-    // o nome dessa const precisa ser igual ao req.param que passamos na rota!
     const product = await database.Products.findAll({
       where: {
         id: Number(productid),
@@ -36,12 +35,12 @@ class ProductsController {
 
   static async deleteProductsbyId(req, res) {
     const { productid } = req.params;
-    const product = await database.Products.destroy({
+    const deletedProduct = await database.Products.destroy({
       where: {
         id: Number(productid),
       },
     });
-    return res.status(200).json(product);
+    return res.status(200).json(deletedProduct);
   }
 }
 module.exports = ProductsController;
