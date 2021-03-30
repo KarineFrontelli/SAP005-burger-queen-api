@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 // aqui vai o código que acessa o banco de dados
 const database = require('../db/models');
 
@@ -9,10 +8,10 @@ class ProductsController {
   }
 
   static async getProductsById(req, res) {
-    const { productid } = req.params;
-    const product = await database.Users.findAll({
+    const { productsid } = req.params;
+    const product = await database.Products.findAll({
       where: {
-        id: Number(productid),
+        id: Number(productsid),
       },
     });
     return res.status(200).json(product);
@@ -34,7 +33,8 @@ class ProductsController {
   }
 
   static async deleteProductsbyId(req, res) {
-    const { productid } = req.params;
+    const productid = req.params.productsid;
+    console.log(productid)
     const deletedProduct = await database.Products.destroy({
       where: {
         id: Number(productid),

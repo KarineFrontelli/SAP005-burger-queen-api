@@ -4,10 +4,10 @@ const ProductsController = require('../controller/ProductsController')
 const router = Router()
 
 // aqui vai as requisições
-router.get("/", ProductsController.getAllOrders)
-//router.get("/:orderId", OrdersController.getOrdersById)
-//router.post("/", OrdersController.postAllOrders)
-//router.put("/:orderId", OrdersController.putOrdersById)
-//router.delete("/:orderId", OrdersController.deletedOrdersById)
+router.get("/", ProductsController.getAllProducts)
+router.get("/:productsid", ProductsController.getProductsById)
+router.post("/", ProductsController.postNewProducts)
+//router.put("/:productsid", ProductsController.putProductsById)
+router.delete("/:productsid", ProductsController.deleteProductsbyId)
 
 module.exports = router
