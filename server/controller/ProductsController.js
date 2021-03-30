@@ -34,7 +34,6 @@ class ProductsController {
 
   static async deleteProductsbyId(req, res) {
     const productid = req.params.productsid;
-    console.log(productid)
     const deletedProduct = await database.Products.destroy({
       where: {
         id: Number(productid),

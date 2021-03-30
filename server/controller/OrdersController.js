@@ -8,10 +8,10 @@ class OrdersController {
   }
 
   static async getOrdersById(req, res) {
-    const { orderId } = req.params;
+    const { orderid } = req.params;
     const order = await database.Orders.findAll({
       where: {
-        id: Number(orderId),
+        id: Number(orderid),
       },
     });
     return res.status(200).json(order);
@@ -32,11 +32,11 @@ class OrdersController {
     return res.status(200).json(order);
   }
 
-  static async deleteOrderById(req, res) {
-    const { orderId } = req.params;
+  static async deletedOrdersById(req, res) {
+    const orderid = req.params.orderid;
     const deletedOrder = await database.Orders.destroy({
       where: {
-        id: Number(orderId),
+        id: Number(orderid),
       },
     });
     return res.status(200).json(deletedOrder);
