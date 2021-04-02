@@ -1,7 +1,7 @@
-// aqui vai o código que acessa o banco de dados
 const database = require('../db/models');
 
 class OrdersController {
+
   static async getAllOrders(req, res) {
     const order = await database.Orders.findAll();
     return res.status(200).json(order);
@@ -17,19 +17,20 @@ class OrdersController {
     return res.status(200).json(order);
   }
 
-  static async postAllOrders(req, res) {
+  static async postOrders(req, res) {
     const newOrder = await database.Orders.create(req.body);
     return res.status(200).json(newOrder);
   }
 
   static async putOrdersById(req, res) {
-    const { orderId } = req.params;
-    const order = await database.Orders.findAll({
+    const { orderid } = req.params;
+    let orderToUpdate = req.body;
+    const order = await database.Orders.update(orderToUpdate, {
       where: {
-        id: Number(orderId),
+        id: Number(orderid),
       },
     });
-    return res.status(200).json(order);
+    return res.status(200).json("Update ok");
   }
 
   static async deletedOrdersById(req, res) {
